@@ -3,6 +3,9 @@ source:
   - map: Chr
     name: chromosome
     type: String
+  - map: Start
+    name: position
+    type: Float
   headerRow: 0
   resource: test_annovar.hg19.tsv
   skipRows: 1
