@@ -1,2 +1,3 @@
 # npybio-ngsdata
-Usint
+
+Notebook ipython to parse and handle NGS Data for variants

@@ -1,0 +1,16 @@
+source:
+  fields:
+  - map: Chr
+    name: chromosome
+    type: String
+  headerRow: 0
+  resource: A542_A08_14.annotated.hg19_multianno.txt
+  skipRows: 1
+  source: TSV
+target:
+  createTable: 'true'
+  replaceTable: 'true'
+  table: test
+  truncateTable: 'true'
+  type: Database
+  url: sqlite:///test.db
