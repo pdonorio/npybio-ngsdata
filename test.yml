@@ -4,7 +4,7 @@ source:
     name: chromosome
     type: String
   headerRow: 0
-  resource: A542_A08_14.annotated.hg19_multianno.txt
+  resource: test_annovar.hg19.tsv
   skipRows: 1
   source: TSV
 target:
