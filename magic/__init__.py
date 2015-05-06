@@ -2,9 +2,13 @@
 
 # Constants
 EMPTY_VALUE = '-'
-DEBUG_DATABASE = 'testing'
-DEBUG_TABLE = 'testing'
+DEBUG_DATABASE = 'test'
+DEBUG_TABLE = 'tester'
 DEBUG_LIMIT = 10
+
+INPUT_DIR = 'input'
+CONF_DIR = 'conf'
+FILEDB_DIR = 'fsql'
 
 # Logger
 import logging
