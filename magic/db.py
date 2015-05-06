@@ -3,16 +3,23 @@
 A database class to save and access parsed data
 """
 
-import abc
+import abc, os
 import sqlite3 as lite
-from magic import logging
+from magic import logging, DEBUG_DATABASE, DEBUG_TABLE, FILEDB_DIR
 
 logger = logging.getLogger('database')
+
+# Check dir and create
+if not os.path.exists(FILEDB_DIR):
+    try:
+        os.makedirs(FILEDB_DIR)
+    except OSError:
+        logger.error("Failed to create dir '" + FILEDB_DIR + "'")
 
 class db(object):
     """Generic db abstraction"""
 
-    dbname = 'test'
+    dbname = DEBUG_DATABASE
     connection = None
 
     def __init__(self, database):
@@ -43,11 +50,12 @@ class dblite(db):
     def connect(self):
 
         # Operations
-        self.sqlfile = self.dbname + ".sql"
+        self.sqlfile = FILEDB_DIR + '/' + self.dbname + '.db'
 
         # connect
         try:
             self.connection = lite.connect(self.sqlfile)
+            logger.info("Db file: " + self.sqlfile)
             self.cursor = self.connection.cursor()
         except lite.Error, e:
             raise BaseException("No sql lite connection", e)

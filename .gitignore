@@ -1,5 +1,6 @@
 #sqllite
 *.db
+*.sql
 #ipython
 .ipynb_checkpoints
 tests.ipy
