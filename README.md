@@ -17,3 +17,8 @@ A suggested software for annotation is [ANNOVAR](missing reference).
 
 This notebooks examples help to parse, filter, plot and intersect
 annotated variants via python commands.
+
+## Debugging
+
+Download the python code and the package from notebook and execute it via shell.
+There will prompt logger prints.

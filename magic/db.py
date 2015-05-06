@@ -15,18 +15,15 @@ class db(object):
     dbname = 'test'
     connection = None
 
-    def __init__(self, database=None):
+    def __init__(self, database):
         # Init
         super(db, self).__init__()
         # Arguments
         if database != None:
             self.dbname = database
-        self.dbname = database
-
-        ## Loggin tests...
-        # logger.info("Test")
-        # print logger
-        # print "Connect?"
+        # Db connection
+        logger.debug("Db istance")
+        self.connect()
 
     @abc.abstractmethod
     def connect(self):
@@ -55,4 +52,5 @@ class dblite(db):
         except lite.Error, e:
             raise BaseException("No sql lite connection", e)
         finally:
-            print "Connected"
+            logger.info("Connected")
+            print self.connection

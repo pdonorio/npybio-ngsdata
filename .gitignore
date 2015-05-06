@@ -2,6 +2,7 @@
 *.db
 #ipython
 .ipynb_checkpoints
+tests.ipy
 #MAC
 .DS*
 
