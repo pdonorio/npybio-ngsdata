@@ -4,6 +4,7 @@
 EMPTY_VALUE = '-'
 DEBUG_DATABASE = 'test'
 DEBUG_TABLE = 'tester'
+DEBUG_YAMLFILE = 'config.example'
 DEBUG_LIMIT = 10
 
 INPUT_DIR = 'input'
