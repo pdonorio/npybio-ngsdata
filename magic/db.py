@@ -20,6 +20,7 @@ class db(object):
     """Generic db abstraction"""
 
     dbname = DEBUG_DATABASE
+    tablename = DEBUG_TABLE
     connection = None
 
     def __init__(self, database):
@@ -57,8 +58,15 @@ class dblite(db):
             self.connection = lite.connect(self.sqlfile)
             logger.info("Db file: " + self.sqlfile)
             self.cursor = self.connection.cursor()
-        except lite.Error, e:
+        except lite.Error as e:
             raise BaseException("No sql lite connection", e)
         finally:
-            logger.info("Connected")
-            print self.connection
+            logger.info("Connected: " + self.connection.__repr__())
+
+    def get_content(self):
+        # Query
+        query = "SELECT * FROM " + self.tablename
+        self.cursor.execute(query)
+        for i in self.cursor.fetchall():
+            #DEBUG
+            print(i)
