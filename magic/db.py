@@ -16,7 +16,7 @@ if not os.path.exists(FILEDB_DIR):
     except OSError:
         logger.error("Failed to create dir '" + FILEDB_DIR + "'")
 
-class db(object):
+class DB(object):
     """Generic db abstraction"""
 
     dbname = DEBUG_DATABASE
@@ -25,7 +25,7 @@ class db(object):
 
     def __init__(self, database):
         # Init
-        super(db, self).__init__()
+        super(DB, self).__init__()
         # Arguments
         if database != None:
             self.dbname = database
@@ -38,7 +38,7 @@ class db(object):
         """ Abstract connection """
         return
 
-class dblite(db):
+class DBlite(DB):
     """ Implementation of database via sqlite3 library """
 
     cursor = None
@@ -46,7 +46,7 @@ class dblite(db):
 
     def __init__(self, database):
         # Parent constructor
-        super(dblite, self).__init__(database)
+        super(DBlite, self).__init__(database)
 
     def connect(self):
 

@@ -2,10 +2,11 @@
 
 # Constants
 EMPTY_VALUE = '-'
+DEBUG_LIMIT = 10
 DEBUG_DATABASE = 'test'
 DEBUG_TABLE = 'tester'
 DEBUG_YAMLFILE = 'config.example'
-DEBUG_LIMIT = 10
+YAML_EXTENSION = '.yml'
 
 INPUT_DIR = 'input'
 CONF_DIR = 'conf'
