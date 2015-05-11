@@ -35,5 +35,5 @@ if debug:
 
 ###################################
 # Execute parser
-import magic.shell
-print("Shell")
+from magic.shell import PyShell as bash
+bash("echo test")
