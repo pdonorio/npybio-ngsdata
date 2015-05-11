@@ -8,7 +8,10 @@ conf = ConfGen()
 conf.add_field("Chr")
 conf.add_field("Start")
 conf.add_field("End")
-print(conf.fields)
 
-import magic.shell
-print("Shell")
+conf.tsv_source()
+conf.dump_configuration()
+# it works
+
+# import magic.shell
+# print("Shell")

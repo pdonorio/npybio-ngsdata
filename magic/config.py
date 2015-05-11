@@ -4,9 +4,8 @@ Generator for YAML file.
 Needed from mETL package to parse the data.
 """
 
+import yaml
 from magic import logging, YAML_EXTENSION, DEBUG_YAMLFILE
-# UHM
-#import yaml
 
 logger = logging.getLogger('configurator')
 
@@ -31,8 +30,12 @@ class ConfGen(object):
             'map': fieldname, 'name': fieldname, 'type': mytype})
         logger.debug("Adding field '" + fieldname + "'")
 
-    def tsv_source(self, fields):
+    def tsv_source(self, fields=None):
         """ Complete the request configuration via static data """
+
+        if fields == None:
+            fields = self.fields
+
         self.data['source'] = { \
             'resource': self.yaml_fname, \
             'fields': fields, \
@@ -48,11 +51,8 @@ class ConfGen(object):
     def dump_configuration(self):
         """ Dumps the configuration array into the needed file """
 
-        # Check errors?
-
         with open(self.yaml_fname + YAML_EXTENSION, 'w') as outfile:
-            outfile.write(yaml.dump(self.data, default_flow_style=False))
+            outfile.write(yaml.dump(self.data, \
+                #encoding=('utf-8'), \
+                default_flow_style=False))
 
-# #!head {yfile} -n 3
-# out = !! wc -l {yfile}
-# print "Your configuration inside file '" + yfile + "' reaches " + out.s.split(" ")[0] + " lines"
