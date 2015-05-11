@@ -25,15 +25,15 @@ from magic.db import DBlite
 db = DBlite("mydb")
 conf.dblite_target(db)
 # Write configuration
-conf.dump_configuration()
+cfile = conf.dump_configuration()
 
 ###################################
 # Check configuration
 if debug:
     from magic import print_file
-    print(print_file(conf.get_file()))
+    print(print_file(cfile))
 
 ###################################
 # Execute parser
 from magic.shell import PyShell as bash
-bash("echo test")
+bash("metl " + cfile)

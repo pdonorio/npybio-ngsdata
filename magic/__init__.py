@@ -6,11 +6,11 @@ EMPTY_VALUE = '-'
 DEBUG_LIMIT = 10
 DEBUG_DATABASE = 'test'
 DEBUG_TABLE = 'tester'
-DEBUG_YAMLFILE = 'config.example'
+DEBUG_YAMLFILE = 'config_example'
 YAML_EXTENSION = '.yml'
 
 INPUT_DIR = 'input'
-CONF_DIR = 'conf'
+CONF_DIR = '' # 'conf'
 FILEDB_DIR = 'fsql'
 
 ####################################

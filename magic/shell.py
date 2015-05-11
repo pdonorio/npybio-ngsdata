@@ -43,7 +43,7 @@ class PyShell(object):
                 logger.info("Comm output: " + out.__str__())
         else:
             msg = "Could not process shell command:\n" + " ".join(cmd) + "\n" + \
-                ". Error: " + err
+                ". Error: " + err.__str__()
             logger.critical(msg)
             raise BaseException(msg)
 

@@ -49,11 +49,14 @@ class ConfGen(object):
             'url': 'sqlite:///' + sqlclass.get_dbfile()}
 
     def get_file(self):
-        return CONF_DIR + '/' + self.yaml_fname + YAML_EXTENSION
+        return self.yaml_fname + YAML_EXTENSION
+        #return CONF_DIR + '/' + self.yaml_fname + YAML_EXTENSION
 
     def dump_configuration(self):
         """ Dumps the configuration array into the needed file """
 
-        with open(self.get_file(), 'w') as outfile:
+        cfile = self.get_file()
+        with open(cfile, 'w') as outfile:
             outfile.write(yaml.dump(self.data, default_flow_style=False))
+        return cfile
 
