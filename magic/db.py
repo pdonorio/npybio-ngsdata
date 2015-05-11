@@ -38,6 +38,9 @@ class DB(object):
         """ Abstract connection """
         return
 
+    def get_table(self):
+        return self.tablename
+
 class DBlite(DB):
     """ Implementation of database via sqlite3 library """
 
@@ -62,6 +65,9 @@ class DBlite(DB):
             raise BaseException("No sql lite connection", e)
         finally:
             logger.info("Connected: " + self.connection.__repr__())
+
+    def get_dbfile(self):
+        return self.sqlfile
 
     def get_content(self):
         # Query
