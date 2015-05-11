@@ -9,13 +9,6 @@ from magic import logging, DEBUG_DATABASE, DEBUG_TABLE, FILEDB_DIR
 
 logger = logging.getLogger('database')
 
-# Check dir and create
-if not os.path.exists(FILEDB_DIR):
-    try:
-        os.makedirs(FILEDB_DIR)
-    except OSError:
-        logger.error("Failed to create dir '" + FILEDB_DIR + "'")
-
 class DB(object):
     """Generic db abstraction"""
 
