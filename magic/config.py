@@ -14,6 +14,7 @@ class ConfGen(object):
     """ A class to recover data and generate the config file """
 
     data = {}
+    fields = []
     yaml_fname = DEBUG_YAMLFILE
 
     def __init__(self, filename=None):
@@ -22,6 +23,13 @@ class ConfGen(object):
             self.yaml_fname = filename
 
         logger.debug("Configuration in '" + self.yaml_fname + "'")
+
+    def add_field(self, fieldname, mytype='String', label=None):
+        if label == None:
+            label = fieldname
+        self.fields.append({ \
+            'map': fieldname, 'name': fieldname, 'type': mytype})
+        logger.debug("Adding field '" + fieldname + "'")
 
     def tsv_source(self, fields):
         """ Complete the request configuration via static data """
