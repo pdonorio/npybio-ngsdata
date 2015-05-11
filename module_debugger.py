@@ -13,5 +13,8 @@ conf.tsv_source()
 conf.dump_configuration()
 # it works
 
+from magic import print_file
+print(print_file(conf.get_file()))
+
 # import magic.shell
 # print("Shell")

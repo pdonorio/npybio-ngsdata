@@ -16,3 +16,9 @@ FILEDB_DIR = 'fsql'
 import logging
 FORMAT = '%(asctime)-15s [%(name)-10s|%(levelname)-8s] %(message)s'
 logging.basicConfig(level=logging.DEBUG, format=FORMAT)
+
+def print_file(filename):
+    """ Quickly read file """
+
+    with open(filename, encoding='utf-8') as f:
+        return f.read()
