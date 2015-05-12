@@ -17,7 +17,8 @@ conf.add_field("End")
 
 ###################################
 # Reading from a TSV
-conf.tsv_source()
+input_file = "input/test/test_annovar.hg19.tsv"
+conf.tsv_source(input_file)
 
 ###################################
 # Writing to a sqlite file db

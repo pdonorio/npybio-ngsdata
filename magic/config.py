@@ -31,14 +31,14 @@ class ConfGen(object):
             'map': fieldname, 'name': fieldname, 'type': mytype})
         logger.debug("Adding field '" + fieldname + "'")
 
-    def tsv_source(self, fields=None):
+    def tsv_source(self, inputfile, fields=None):
         """ Complete the request configuration via static data """
 
         if fields == None:
             fields = self.fields
 
         self.data['source'] = { \
-            'resource': self.yaml_fname, \
+            'resource': inputfile, \
             'fields': fields, \
             'source': 'TSV', 'headerRow': 0, 'skipRows': 1}
 
