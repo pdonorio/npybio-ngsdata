@@ -3,7 +3,7 @@
 A database class to save and access parsed data
 """
 
-import abc, os
+import abc
 import sqlite3 as lite
 from magic import logging, DEBUG_DATABASE, DEBUG_TABLE, FILEDB_DIR
 
@@ -66,6 +66,8 @@ class DBlite(DB):
         # Query
         query = "SELECT * FROM " + self.tablename
         self.cursor.execute(query)
-        for i in self.cursor.fetchall():
-            #DEBUG
-            print(i)
+        data = []
+        for row in self.cursor.fetchall():
+            data.append(row)
+
+        return data

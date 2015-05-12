@@ -39,3 +39,7 @@ if debug:
 from magic.shell import PyShell as bash
 #bash("ls")
 bash(conf.get_command())
+
+###################################
+# Query
+print(db.get_content()[:4])
