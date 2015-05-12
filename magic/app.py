@@ -31,4 +31,4 @@ class App(object):
         #bash("ls")
         bash(self.config.get_command())
 
-        return db.get_content()[:4]
+        return db.get_content()

@@ -7,7 +7,7 @@ DEBUG_LIMIT = 10
 DEBUG_DATABASE = 'test'
 DEBUG_TABLE = 'tester'
 DEBUG_YAMLFILE = 'config_example'
-YAML_COMMAND = 'metl'
+YAML_COMMAND = '/opt/miniconda/bin/metl' # 'metl'
 YAML_EXTENSION = '.yml'
 
 INPUT_DIR = 'input'
