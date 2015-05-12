@@ -15,20 +15,14 @@ class App(object):
     def run(self):
         """ Running the pipeline """
 
-        ###################################
         # Reading from a TSV
         self.config.tsv_source(self.finput)
-
-        ###################################
         # Writing to a sqlite file db
         db = DBlite("mydb")
         self.config.dblite_target(db)
         # Write configuration
         self.config.dump_configuration()
-
-        ###################################
         # Execute parser
-        #bash("ls")
         bash(self.config.get_command())
-
+        # Return data
         return db.get_content()
