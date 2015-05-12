@@ -5,7 +5,7 @@ Needed from mETL package to parse the data.
 """
 
 import yaml
-from magic import logging, \
+from magic import logging, print_file, \
     YAML_COMMAND, YAML_EXTENSION, DEBUG_YAMLFILE, CONF_DIR
 
 logger = logging.getLogger('configurator')
@@ -55,10 +55,18 @@ class ConfGen(object):
     def get_command(self):
         return YAML_COMMAND + " " + self.get_file()
 
-    def dump_configuration(self):
+    def dump_configuration(self, debug=False):
         """ Dumps the configuration array into the needed file """
 
         cfile = self.get_file()
         with open(cfile, 'w') as outfile:
             outfile.write(yaml.dump(self.data, default_flow_style=False))
+
+        # Check configuration
+        if debug:
+            print(print_file(cfile))
+
         return cfile
+
+# New instance
+conf = ConfGen()
