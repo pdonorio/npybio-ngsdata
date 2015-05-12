@@ -7,11 +7,12 @@ DEBUG_LIMIT = 10
 DEBUG_DATABASE = 'test'
 DEBUG_TABLE = 'tester'
 DEBUG_YAMLFILE = 'config_example'
+YAML_COMMAND = 'metl'
 YAML_EXTENSION = '.yml'
 
 INPUT_DIR = 'input'
-CONF_DIR = '' # 'conf'
 FILEDB_DIR = 'fsql'
+CONF_DIR = 'conf' # unused?
 
 ####################################
 # Logger
@@ -33,6 +34,7 @@ import os
 
 dirs = [INPUT_DIR, CONF_DIR, FILEDB_DIR]
 for mydir in dirs:
+
     if not os.path.exists(mydir):
         try:
             os.makedirs(mydir)

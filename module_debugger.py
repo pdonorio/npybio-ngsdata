@@ -36,4 +36,5 @@ if debug:
 ###################################
 # Execute parser
 from magic.shell import PyShell as bash
-bash("metl " + cfile)
+#bash("ls")
+bash(conf.get_command())

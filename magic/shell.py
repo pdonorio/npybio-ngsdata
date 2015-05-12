@@ -33,16 +33,19 @@ class PyShell(object):
         if cmd == None:
             cmd = self.cmd
 
-        print("COM", cmd)
+        cmdstring = " ".join(cmd)
+        logger.info("Executing:\n" + cmdstring)
 
-        proc = shell.Popen(cmd, stdout=shell.PIPE, stderr=shell.PIPE)
+        proc = shell.Popen(cmd, \
+            #cwd=MAIN_DIR, \
+            stdout=shell.PIPE, stderr=shell.PIPE)
         out, err = proc.communicate()
         # Handle output
         if proc.returncode == 0:
             if out != None and out != "":
                 logger.info("Comm output: " + out.__str__())
         else:
-            msg = "Could not process shell command:\n" + " ".join(cmd) + "\n" + \
+            msg = "Could not process shell command:\n" + cmdstring + "\n" + \
                 ". Error: " + err.__str__()
             logger.critical(msg)
             raise BaseException(msg)
