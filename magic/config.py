@@ -4,9 +4,9 @@ Generator for YAML file.
 Needed from mETL package to parse the data.
 """
 
-from magic import logging, YAML_EXTENSION, DEBUG_YAMLFILE
-# UHM
-#import yaml
+import yaml
+from magic import logging, print_file, \
+    YAML_COMMAND, YAML_EXTENSION, DEBUG_YAMLFILE, CONF_DIR
 
 logger = logging.getLogger('configurator')
 
@@ -31,10 +31,14 @@ class ConfGen(object):
             'map': fieldname, 'name': fieldname, 'type': mytype})
         logger.debug("Adding field '" + fieldname + "'")
 
-    def tsv_source(self, fields):
+    def tsv_source(self, inputfile, fields=None):
         """ Complete the request configuration via static data """
+
+        if fields == None:
+            fields = self.fields
+
         self.data['source'] = { \
-            'resource': self.yaml_fname, \
+            'resource': inputfile, \
             'fields': fields, \
             'source': 'TSV', 'headerRow': 0, 'skipRows': 1}
 
@@ -45,14 +49,24 @@ class ConfGen(object):
             'table': sqlclass.get_table(), \
             'url': 'sqlite:///' + sqlclass.get_dbfile()}
 
-    def dump_configuration(self):
+    def get_file(self):
+        return CONF_DIR + '/' + self.yaml_fname + YAML_EXTENSION
+
+    def get_command(self):
+        return YAML_COMMAND + " " + self.get_file()
+
+    def dump_configuration(self, debug=False):
         """ Dumps the configuration array into the needed file """
 
-        # Check errors?
-
-        with open(self.yaml_fname + YAML_EXTENSION, 'w') as outfile:
+        cfile = self.get_file()
+        with open(cfile, 'w') as outfile:
             outfile.write(yaml.dump(self.data, default_flow_style=False))
 
-# #!head {yfile} -n 3
-# out = !! wc -l {yfile}
-# print "Your configuration inside file '" + yfile + "' reaches " + out.s.split(" ")[0] + " lines"
+        # Check configuration
+        if debug:
+            print(print_file(cfile))
+
+        return cfile
+
+# New instance
+conf = ConfGen()

@@ -13,6 +13,9 @@ formatted files, already annotated.
 
 A suggested software for annotation is [ANNOVAR](missing reference).
 
+All files should be inside an 'input/' directory available at the same level
+of the running notebook.
+
 ## How it works
 
 This notebooks examples help to parse, filter, plot and intersect

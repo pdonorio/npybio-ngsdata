@@ -3,18 +3,11 @@
 A database class to save and access parsed data
 """
 
-import abc, os
+import abc
 import sqlite3 as lite
 from magic import logging, DEBUG_DATABASE, DEBUG_TABLE, FILEDB_DIR
 
 logger = logging.getLogger('database')
-
-# Check dir and create
-if not os.path.exists(FILEDB_DIR):
-    try:
-        os.makedirs(FILEDB_DIR)
-    except OSError:
-        logger.error("Failed to create dir '" + FILEDB_DIR + "'")
 
 class DB(object):
     """Generic db abstraction"""
@@ -37,6 +30,9 @@ class DB(object):
     def connect(self):
         """ Abstract connection """
         return
+
+    def get_table(self):
+        return self.tablename
 
 class DBlite(DB):
     """ Implementation of database via sqlite3 library """
@@ -63,10 +59,15 @@ class DBlite(DB):
         finally:
             logger.info("Connected: " + self.connection.__repr__())
 
+    def get_dbfile(self):
+        return self.sqlfile
+
     def get_content(self):
         # Query
         query = "SELECT * FROM " + self.tablename
         self.cursor.execute(query)
-        for i in self.cursor.fetchall():
-            #DEBUG
-            print(i)
+        data = []
+        for row in self.cursor.fetchall():
+            data.append(row)
+
+        return data
