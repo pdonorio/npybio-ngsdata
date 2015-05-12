@@ -34,12 +34,14 @@ class PyShell(object):
             cmd = self.cmd
 
         cmdstring = " ".join(cmd)
-        logger.info("Executing:\n" + cmdstring)
+        logger.info("Executing:\t" + cmdstring)
 
         proc = shell.Popen(cmd, \
             #cwd=MAIN_DIR, \
             stdout=shell.PIPE, stderr=shell.PIPE)
         out, err = proc.communicate()
+        out = out.decode(encoding='UTF-8')
+
         # Handle output
         if proc.returncode == 0:
             if out != None and out != "":

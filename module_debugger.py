@@ -2,7 +2,8 @@
 
 """ Using a module to parse data """
 
-debug = True
+#debug = True
+debug = False
 
 ###################################
 # Creating the configuration
