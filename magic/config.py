@@ -6,7 +6,7 @@ Needed from mETL package to parse the data.
 
 import yaml
 from magic import logging, \
-    YAML_COMMAND, YAML_EXTENSION, DEBUG_YAMLFILE
+    YAML_COMMAND, YAML_EXTENSION, DEBUG_YAMLFILE, CONF_DIR
 
 logger = logging.getLogger('configurator')
 
@@ -50,7 +50,7 @@ class ConfGen(object):
             'url': 'sqlite:///' + sqlclass.get_dbfile()}
 
     def get_file(self):
-        return self.yaml_fname + YAML_EXTENSION
+        return CONF_DIR + '/' + self.yaml_fname + YAML_EXTENSION
 
     def get_command(self):
         return YAML_COMMAND + " " + self.get_file()
@@ -62,4 +62,3 @@ class ConfGen(object):
         with open(cfile, 'w') as outfile:
             outfile.write(yaml.dump(self.data, default_flow_style=False))
         return cfile
-
